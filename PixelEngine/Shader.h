@@ -6,6 +6,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "SOIL2/SOIL2.h"
+
 #include <GL/glew.h>
 
 class Shader
@@ -51,6 +53,7 @@ public:
 		GLchar infoLog[512];
 		// Vertex Shader
 		vertex = glCreateShader(GL_VERTEX_SHADER);
+
 		glShaderSource(vertex, 1, &vShaderCode, NULL);
 		glCompileShader(vertex);
 		// Print compile errors if any
@@ -86,7 +89,6 @@ public:
 		// Delete the shaders as they're linked into our program now and no longer necessery
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
-
 	}
 	// Uses the current shader
 	void Use()
