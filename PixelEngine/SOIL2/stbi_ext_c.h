@@ -50,10 +50,9 @@ int stbi_test_from_file(FILE *f)
 
 int stbi_test(char const *filename)
 {
-   FILE *f = fopen(filename, "rb");
-   int result;
-   if (!f) return STBI_unknown;
-   result = stbi_test_from_file(f);
+	FILE *f;
+   if ( fopen_s(&f, filename, "rb") != 0 ) return STBI_unknown;
+   int result = stbi_test_from_file(f);
    fclose(f);
    return result;
 }

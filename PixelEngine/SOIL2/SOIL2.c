@@ -2280,8 +2280,7 @@ unsigned int SOIL_direct_load_DDS(
 		result_string_pointer = "NULL filename";
 		return 0;
 	}
-	f = fopen( filename, "rb" );
-	if( NULL == f )
+	if( fopen_s(&f, filename, "rb") != 0 )
 	{
 		/*	the file doesn't seem to exist (or be open-able)	*/
 		result_string_pointer = "Can not find DDS file";
@@ -2592,13 +2591,12 @@ unsigned int SOIL_direct_load_PVR(
 	size_t buffer_length, bytes_read;
 	unsigned int tex_ID = 0;
 	/*	error checks	*/
-	if( NULL == filename )
+	if(NULL == filename)
 	{
 		result_string_pointer = "NULL filename";
 		return 0;
 	}
-	f = fopen( filename, "rb" );
-	if( NULL == f )
+	if( fopen_s(&f, filename, "rb") != 0 )
 	{
 		/*	the file doesn't seem to exist (or be open-able)	*/
 		result_string_pointer = "Can not find PVR file";
@@ -2734,8 +2732,7 @@ unsigned int SOIL_direct_load_ETC1(const char *filename,
 		result_string_pointer = "NULL filename";
 		return 0;
 	}
-	f = fopen( filename, "rb" );
-	if( NULL == f )
+	if( fopen_s(&f, filename, "rb") != 0)
 	{
 		/*	the file doesn't seem to exist (or be open-able)	*/
 		result_string_pointer = "Can not find PVR file";

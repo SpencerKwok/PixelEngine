@@ -246,8 +246,8 @@ int jo_write_jpg(const char *filename, const void *data, int width, int height, 
 		return 0;
 	}
 
-	FILE *fp = fopen(filename, "wb");
-	if(!fp) {
+	FILE *fp;
+	if( fopen_s(&fp, filename, "wb") != 0 ) {
 		return 0;
 	}
 

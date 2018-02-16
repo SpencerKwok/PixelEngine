@@ -6,9 +6,14 @@
 #include <sstream>
 #include <iostream>
 
+#include <string>
+#include <streambuf>
+#include <vector>
+
 #include "SOIL2/SOIL2.h"
 
 #include <GL/glew.h>
+
 
 class Shader
 {
@@ -16,7 +21,7 @@ public:
 	GLuint Program;
 	// Constructor generates the shader on the fly
 	Shader(const GLchar *vertexPath, const GLchar *fragmentPath)
-	{
+	{		
 		// 1. Retrieve the vertex/fragment source code from filePath
 		std::string vertexCode;
 		std::string fragmentCode;
@@ -47,6 +52,7 @@ public:
 		}
 		const GLchar *vShaderCode = vertexCode.c_str();
 		const GLchar *fShaderCode = fragmentCode.c_str();
+
 		// 2. Compile shaders
 		GLuint vertex, fragment;
 		GLint success;
